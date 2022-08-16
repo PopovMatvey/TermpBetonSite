@@ -1,0 +1,52 @@
+/* Основные стили */
+
+/* Слайдер */
+.slick-slider {
+	min-width: 0;
+}
+
+/* Ограничивающая оболочка */
+.slick-list {
+	overflow: hidden;
+}
+
+/* Лента слайдов */
+.slick-track {
+	display: flex;
+	align-items: flex-start;
+}
+
+/* Конкретный слайдер */
+.portfolo {
+	position: relative;
+	border: 0.5px solid black;
+    border-radius: 10px;
+	background: white;
+}
+
+.portfolo .slick-dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px auto 20px 0px;
+}
+
+.portfolo .slick-dots li {
+	list-style: none;
+	margin: 0px 10px;
+}
+
+.portfolo .slick-dots button {
+	font-size: 0;
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	border: 2px solid black;
+	border-radius: 50%;
+}
+
+.portfolo .slick-dots li.slick-active button {
+	background-color: #0F525A;
+	border: 1px solid #0F525A;
+	border: 2px solid #0F525A;
+}
