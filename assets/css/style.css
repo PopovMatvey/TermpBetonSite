@@ -14,6 +14,7 @@
 
 /* Начальные стили */
 body {
+    font-family: 'icomoon';
     min-width: 300px;
     background: url('../img/bumaga-myataya-fon.jpg') 0% 0%/ 100% 100% no-repeat;
     background-attachment: fixed;
@@ -46,6 +47,7 @@ header {
 
 .head {
     display: flex;
+    justify-content: space-around;
     height: 130px;
     align-items: center;
 }

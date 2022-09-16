@@ -1,5 +1,6 @@
 /* Начальные стили */
 body {
+    font-family: 'icomoon';
     min-width: 300px;
     background: url('../img/bumaga-myataya-fon.jpg') 0% 0%/ 100% 100% no-repeat;
     background-attachment: fixed;
@@ -75,18 +76,19 @@ tr {
     border: 0px solid rgba(0, 0, 0, 0);
     line-height: 15px;
 }
-.odd-str-table{
-    background: rgba(216, 228, 248,0.6);
+
+.odd-str-table {
+    background: rgba(216, 228, 248, 0.6);
 }
 
 
-.price-table-body{
+.price-table-body {
     color: black;
     font-size: 14px;
     font-weight: 500;
 }
 
-.table{
+.table {
     width: 850px;
 }
 
@@ -95,21 +97,21 @@ tr {
 }
 
 @media screen and (max-width:400px) {
-    h1{
+    h1 {
         font-size: 40px;
     }
 
-    h2{
+    h2 {
         font-size: 25px;
     }
 }
 
 @media screen and (max-width:300px) {
-    h1{
+    h1 {
         font-size: 30px;
     }
 
-    h2{
+    h2 {
         font-size: 20px;
     }
 }
