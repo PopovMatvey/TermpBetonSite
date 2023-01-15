@@ -1,52 +1,37 @@
+/* Для заголовков */
+@font-face {
+    font-family: 'Concrete';
+    src: url('../fonts/Concrete/Concrete-Regular.otf');
+}
+
+/* Основной текст */
+@font-face {
+    font-family: 'BerlinType';
+    src: url('../fonts/BerlinType/BerlinType-Regular.otf');
+}
+
 
 /* Начальные стили */
 body {
+    font-family: 'icomoon';
     min-width: 300px;
 }
 
 span {
-    font-size: 22px;
-}
-
-.text{
-    line-height: 28px;
-    text-align: justify;
-}
-
-.abz::before{
-    content: "\a0\a0\a0";
+    font-size: 18px;
 }
 
 h2 {
     padding-top: 30px;
 }
 
-.d-none {
-    display: none;
-}
-
-.title{
-    font-size: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #0F525A;
-}
-
-.img{
+.img {
     height: auto;
     width: 100%;
 }
 
-.step{
-    font-size: 14px;
-}
-
-.brown{
-    color: brown ;
-}
-
-.green{
-    color: rgb(7, 65, 7);
+.d-none {
+    display: none;
 }
 
 /* Шапка */
@@ -59,6 +44,7 @@ header {
 
 .head {
     display: flex;
+    justify-content: space-around;
     height: 130px;
     align-items: center;
 }
@@ -215,12 +201,12 @@ nav {
     z-index: 10;
 }
 
-.nav-item{
+.nav-item {
     font-size: 21px;
     margin: 0px 0px 0px 10px;
 }
 
-.dropdown-item{
+.dropdown-item {
     font-size: 30px;
 }
 
@@ -231,7 +217,7 @@ nav {
 /* Аддаптивный navbar */
 
 @media screen and (min-width:1400px) {
-    .nav-item{
+    .nav-item {
         font-size: 28px;
     }
 }
@@ -339,15 +325,123 @@ nav {
         width: 100%;
     }
 }
-/* Основной блок */
-main {
-    width: 100%;
+
+/* АНИМАЦИИ */
+
+/* Появление пунктов меню */
+
+@keyframes topShift {
+    0% {
+        opacity: 0;
+        margin-top: -200px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
 }
 
-h1{
-    font-size: 35px;
+/* Появление лого */
+
+@keyframes comming {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*Основной контент*/
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.appication-block {
+    width: 100%;
+    padding: 5% 0px 5% 0px;
+}
+
+.appication-block_information {
+    width: 80%;
+}
+
+.appication-block_information__row {
+    width: 100%;
+    height:20%;
+}
+
+.appication-block_information__row__img {
+    width: 33%;
+    height: 100%;
+    padding: 20px;
+
+}
+
+.appication-block_information__row__img img{
+    width: 100%;
+    height: 100%;
+}
+
+.application-block_information__row__description {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 66%;
+    height: 100%;
+    padding: 20px 30px 20px 30px;
+}
+
+.application-block_information__row__description h3 {
+    font-family: 'Concrete';
     font-weight: bold;
-    color: rgba(15, 82, 90, 1);
+    text-align: left;
+    font-size: 24px;
+}
+
+.application-block_information__row__description span {
+    font-family: 'BerlinType';
+    font-size: 20px;
+    text-align: justify;
+}
+
+@media screen and (max-width:790px) {
+    .appication-block_information__row__img {
+        width: 66%;
+        height: 120%;
+    }
+
+    .application-block_information__row__description {
+        width: 66%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .application-block_information__row__description h3 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .application-block_information__row__description span {
+        font-size: 14px;
+    }
+
+    .appication-block_information__row__img{
+        display: flex;
+        justify-content: center;
+    }
+
+    .appication-block_information__row__img img{
+        width: 100%;
+        height: auto;
+    }
 }
 
 
@@ -536,33 +630,5 @@ footer a:hover:after {
         width: 100%;
         text-align: center;
         margin: 0px 0px 30px 0px;
-    }
-}
-
-/* АНИМАЦИИ */
-
-/* Появление пунктов меню */
-
-@keyframes topShift {
-    0% {
-        opacity: 0;
-        margin-top: -200px;
-    }
-
-    100% {
-        opacity: 1;
-        margin-top: 0px;
-    }
-}
-
-/* Появление лого */
-
-@keyframes comming {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
     }
 }

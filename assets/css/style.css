@@ -1,7 +1,7 @@
 /* Подключение иконочных шрифтов */
 @font-face {
     font-family: 'icomoon';
-    src: url('../fonts/libFonts/icomoon.eot');
+    src: url('../fonts/Concrete/Concrete-Regular.otf');
     src: url('../fonts/libFonts/icomoon.eot') format('embedded-opentype'),
         url('../fonts/libFonts/icomoon.ttf') format('truetype'),
         url('../fonts/libFonts/icomoon.woff') format('woff'),
@@ -11,13 +11,22 @@
     font-display: block;
 }
 
+/* Для заголовков */
+@font-face {
+    font-family: 'Concrete';
+    src: url('../fonts/Concrete/Concrete-Regular.otf');
+}
+
+/* Основной текст */
+@font-face {
+    font-family: 'BerlinType';
+    src: url('../fonts/BerlinType/BerlinType-Regular.otf');
+}
 
 /* Начальные стили */
 body {
-    font-family: 'icomoon';
+    font-family: "BerlinType";
     min-width: 300px;
-    background: url('../img/bumaga-myataya-fon.jpg') 0% 0%/ 100% 100% no-repeat;
-    background-attachment: fixed;
 }
 
 span {
