@@ -22,17 +22,17 @@ footer {
     font-size: 16px;
 }
 
-.footer-content a{
+.footer-content a {
     display: block;
     margin: 10px 10px 10px 0px;
     transition: .5s all;
 }
 
-.footer-content a:hover{
+.footer-content a:hover {
     color: #777;
 }
 
-.footer-content a:active{
+.footer-content a:active {
     transform: scale(1.1);
 }
 
@@ -54,7 +54,13 @@ footer {
 }
 
 @media screen and (max-width:893px) {
-    .footer-content_contacts{
+    .footer-content_contacts {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:473px) {
+    .footer-content_navigation {
         text-align: center;
     }
 }
