@@ -1,0 +1,66 @@
+footer {
+    font-family: 'BerlinType';
+    width: 100%;
+    height: auto;
+    background: rgba(188, 213, 254, 0.5);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px 30px 0px 30px;
+}
+
+.footer-content h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer-content li {
+    margin: 10px 0px 10px 0px;
+    font-size: 16px;
+}
+
+.footer-content a{
+    display: block;
+    margin: 10px 10px 10px 0px;
+    transition: .5s all;
+}
+
+.footer-content a:hover{
+    color: #777;
+}
+
+.footer-content a:active{
+    transform: scale(1.1);
+}
+
+.footer-content_img {
+    padding: 0px 0px 0px 0px;
+}
+
+.footer-content_img img {
+    height: 100%;
+    width: 300px;
+}
+
+.footer-content_navigation {
+    padding: 10px 10px 10px 10px;
+}
+
+.footer-content_contacts {
+    padding: 10px 10px 10px 10px;
+}
+
+@media screen and (max-width:893px) {
+    .footer-content_contacts{
+        text-align: center;
+    }
+}
+
+.signature {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}

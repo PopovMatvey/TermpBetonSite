@@ -1,6 +1,18 @@
+body{
+    font-family: 'Concrete';
+    min-width: 300px;
+}
+
 .wrapper-sa{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wrapper-b{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
