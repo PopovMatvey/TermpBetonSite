@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../css/Footer.css'
 import logoCompany from "../image/logoCompany.png";
 
@@ -12,11 +13,11 @@ export function Footer() {
                 <div className="footer-content_navigation">
                     <h3>Навигация</h3>
                     <ul>
-                        <li>Главная </li>
-                        <li>Продукция</li>
-                        <li>Примнение</li>
-                        <li>Прайс-лист</li>
-                        <li>Контакты</li>
+                        <Link to='/'>Главная</Link>
+                        <Link to='/production'>Продукция</Link>
+                        <Link to='/application'>Применение</Link>
+                        <Link to='/price-list'>Прайс-лист</Link>
+                        <Link to='/contacts'>Контакты</Link>
                     </ul>
                 </div>
                 <div className="footer-content_contacts">

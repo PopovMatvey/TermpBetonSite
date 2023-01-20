@@ -6,14 +6,16 @@ import '../src/assets/css/themify-icons.css';
 import '../src/assets/css/index.css';
 import App from './assets/components/App';
 import reportWebVitals from './reportWebVitals';
-// import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
