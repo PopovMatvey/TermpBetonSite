@@ -1,30 +1,76 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../css/Footer.css'
 import logoCompany from "../image/logoCompany.png";
+import '../css/Footer.css'
 
+// Подвал
 export function Footer() {
+
+    // Очистить класс элемента
+    function clearClassName(array: HTMLCollection) {
+        for (let i = 0; i < array.length; i++) {
+            array[i].className = "";
+        }
+    }
+
+    // Получить массив ссылок
+    function getHrefsArray(array: HTMLCollection) {
+        let returnedArray: any = [];
+
+        for (let i = 0; i < array.length; i++) {
+            returnedArray.push(array[i].children[0]);
+        }
+
+        return returnedArray;
+    }
+
+    // Обработчик нажатия на ссылку
+    const hendlerHrferClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        const arrayBeginnerLinks = document.querySelectorAll('.menu-block_items')[0].children;
+        const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
+        const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
+        const beginnerMenuLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-beginner');
+
+        clearClassName(arrayBeginnerLinks);
+        clearClassName(arrayFooterLinks);
+        footerLink[0].className = 'disable-href-footer';
+        beginnerMenuLink[0].className = 'disable-href-beginner';
+    }
+
     return (
         <footer>
             <div className="footer-content wrapper-sa">
+                {/* Логотип компании */}
                 <div className="footer-content_img">
                     <img src={logoCompany} alt="" />
                 </div>
+                {/* Подвальное меню */}
                 <div className="footer-content_navigation">
                     <h3>Навигация</h3>
                     <ul>
-                        <Link to='/'>Главная</Link>
-                        <Link to='/production'>Продукция</Link>
-                        <Link to='/application'>Применение</Link>
-                        <Link to='/price-list'>Прайс-лист</Link>
-                        <Link to='/contacts'>Контакты</Link>
+                        <li>
+                            <Link to='/' onClick={hendlerHrferClick} id='mainPageHref-footer' className="disable-href-footer">Главная</Link>
+                        </li>
+                        <li>
+                            <Link to='/production' onClick={hendlerHrferClick} id='productionPageHref-footer'>Продукция</Link>
+                        </li>
+                        <li>
+                            <Link to='/application' onClick={hendlerHrferClick} id='applicationPageHref-footer'>Применение</Link>
+                        </li>
+                        <li>
+                            <Link to='/price-list' onClick={hendlerHrferClick} id='priceListPageHref-footer'>Прайс-лист</Link>
+                        </li>
+                        <li>
+                            <Link to='/contacts' onClick={hendlerHrferClick} id='contactsPageHref-footer'>Контакты</Link>
+                        </li>
                     </ul>
                 </div>
+                {/* Контакты представителей компании */}
                 <div className="footer-content_contacts">
                     <h3>Контакты</h3>
                     <ul>
                         <li>
-                            <a href="tel:+7-910-644-50-33">
+                            <a href="tel:+7-910-644-50-33" >
                                 <i className="fa ti-mobile" aria-hidden="true"></i>
                                 +7-910-644-50-33
                             </a>
