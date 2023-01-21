@@ -28,8 +28,13 @@
     text-align: center;
     background: none;
     padding: 5px 5px 5px 5px;
+    color: #000;
     border: 2px solid black;
     transition: .5s all;
+}
+
+.menu-block button:visited{
+    color: #000;
 }
 
 .menu-block button:hover {
@@ -70,7 +75,10 @@
 
 @media screen and (max-width:867px) {
     .menu-block_alit-button {
-        padding: 20px 0px 20px 0px;
+        padding: 10px 0px 10px 0px;
+    }
+    .disable-href-beginner {
+        padding: 10px 0px 10px 0px;
     }
 
     .menu-block button {
@@ -84,7 +92,7 @@
     }
 
     .menu-block a {
-        margin: 20px 0px 20px 0px;
+        margin: 10px 0px 10px 0px;
     }
 
     .disable-href-beginner {
