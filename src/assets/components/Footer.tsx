@@ -26,15 +26,35 @@ export function Footer() {
 
     // Обработчик нажатия на ссылку
     const hendlerHrferClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-        const arrayBeginnerLinks = document.querySelectorAll('.menu-block_items')[0].children;
-        const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
-        const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
-        const beginnerMenuLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-beginner');
+        const menuBlockChildren = document.querySelectorAll('.menu-block_items')[0].children;
+        
+        if (window.screen.width > 897) {
+            const arrayBeginnerLinksDesktop = document.querySelectorAll('.menu-block_desktop_items')[0].children;
+            const beginnerMenuLinkDesktop = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-Desktopbeginner');
+            const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
+            const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
 
-        clearClassName(arrayBeginnerLinks);
-        clearClassName(arrayFooterLinks);
-        footerLink[0].className = 'disable-href-footer';
-        beginnerMenuLink[0].className = 'disable-href-beginner';
+            clearClassName(arrayBeginnerLinksDesktop);
+            clearClassName(arrayFooterLinks);
+            beginnerMenuLinkDesktop[0].className = 'disable-href-beginner';
+            footerLink[0].className = 'disable-href-footer';
+        } else if ((window.screen.width < 897) && (menuBlockChildren.length === 2)) {
+            const arrayBeginnerLinksMobile = document.querySelectorAll('.menu-block_mobile_items')[0].children;
+            const beginnerMenuLinkMobile = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-Mobilebeginner');
+            const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
+            const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
+
+            clearClassName(arrayBeginnerLinksMobile);
+            clearClassName(arrayFooterLinks);
+            beginnerMenuLinkMobile[0].className = 'disable-href-beginner';
+            footerLink[0].className = 'disable-href-footer';
+        } else if ((window.screen.width < 897) && (menuBlockChildren.length === 1)) {
+            const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
+            const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
+
+            clearClassName(arrayFooterLinks);
+            footerLink[0].className = 'disable-href-footer';
+        }
     }
 
     return (

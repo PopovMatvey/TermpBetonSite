@@ -4,7 +4,7 @@ import "../css/Menu.css";
 
 // Главное меню
 export function Menu() {
-    const [flagAltMenu,setFlagAltMenu] = useState(true);
+    const [flagAltMenu,setFlagAltMenu] = useState(false);
 
     //Обработчик нажатия на кнопку альтернативного меню
     function hendlerAltMenuButton() {
@@ -30,12 +30,23 @@ export function Menu() {
     }
 
     // Обработчик нажатия на ссылку
-    const hendlerHrferClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-        const arrayBeginnerLinks = document.querySelectorAll('.menu-block_items')[0].children;
+    const hendlerHrferDesktopClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        const arrayBeginnerLinksDesktop = document.querySelectorAll('.menu-block_desktop_items')[0].children;
         const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
         const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
-        
-        clearClassName(arrayBeginnerLinks);
+
+        clearClassName(arrayBeginnerLinksDesktop);
+        clearClassName(arrayFooterLinks);
+        event.currentTarget.className = 'disable-href-beginner';
+        footerLink[0].className = 'disable-href-footer';
+    }
+
+    const hendlerHrferMobileClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+        const arrayBeginnerLinksMobile = document.querySelectorAll('.menu-block_mobile_items')[0].children;
+        const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);
+        const footerLink = document.querySelectorAll("#" + event.currentTarget.id.split("-")[0] + '-footer');
+
+        clearClassName(arrayBeginnerLinksMobile);
         clearClassName(arrayFooterLinks);
         event.currentTarget.className = 'disable-href-beginner';
         footerLink[0].className = 'disable-href-footer';
@@ -49,16 +60,26 @@ export function Menu() {
                     <i className="fa ti-menu-alt" aria-hidden="true" ></i>
                 </button>
             </div>
-            {/* Главное меню */}
-            {flagAltMenu &&
-                <div className="menu-block_items">
-                    <Link to='/' onClick={hendlerHrferClick} id='mainPageHref-beginner' className="disable-href-beginner">Главная</Link>
-                    <Link to='/production' onClick={hendlerHrferClick} id='productionPageHref-beginner'>Продукция</Link>
-                    <Link to='/application' onClick={hendlerHrferClick} id='applicationPageHref-beginner'>Применение</Link>
-                    <Link to='/price-list' onClick={hendlerHrferClick} id='priceListPageHref-beginner'>Прайс-лист</Link>
-                    <Link to='/contacts' onClick={hendlerHrferClick} id='contactsPageHref-beginner'>Контакты</Link>
+            <div className="menu-block_items">
+                {/* Главное меню для десктопных устройств */}
+                <div className="menu-block_desktop_items">
+                    <Link to='/' onClick={hendlerHrferDesktopClick} id='mainPageHref-Desktopbeginner' className="disable-href-beginner">Главная</Link>
+                    <Link to='/production' onClick={hendlerHrferDesktopClick} id='productionPageHref-Desktopbeginner'>Продукция</Link>
+                    <Link to='/application' onClick={hendlerHrferDesktopClick} id='applicationPageHref-Desktopbeginner'>Применение</Link>
+                    <Link to='/price-list' onClick={hendlerHrferDesktopClick} id='priceListPageHref-Desktopbeginner'>Прайс-лист</Link>
+                    <Link to='/contacts' onClick={hendlerHrferDesktopClick} id='contactsPageHref-Desktopbeginner'>Контакты</Link>
                 </div>
-            }
+                {/* Главное меню для мобильных устройств*/}
+                {flagAltMenu &&
+                    <div className="menu-block_mobile_items">
+                        <Link to='/' onClick={hendlerHrferMobileClick} id='mainPageHref-Mobilebeginner' className="disable-href-beginner">Главная</Link>
+                        <Link to='/production' onClick={hendlerHrferMobileClick} id='productionPageHref-Mobilebeginner'>Продукция</Link>
+                        <Link to='/application' onClick={hendlerHrferMobileClick} id='applicationPageHref-Mobilebeginner'>Применение</Link>
+                        <Link to='/price-list' onClick={hendlerHrferMobileClick} id='priceListPageHref-Mobilebeginner'>Прайс-лист</Link>
+                        <Link to='/contacts' onClick={hendlerHrferMobileClick} id='contactsPageHref-Mobilebeginner'>Контакты</Link>
+                    </div>
+                }
+            </div>
         </div>
 
     );
