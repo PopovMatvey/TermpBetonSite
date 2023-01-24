@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { ApplicationPage } from "./ApplicationPage";
-import { ContactPage } from "./ContactsPage";
-import { GeneralPage } from "./GeneralPage";
-import { PriceListPage } from "./PriceListPage";
-import { ProductionPage } from "./ProductionPage";
+import { ApplicationPage } from "../pages/ApplicationPage";
+import { ContactPage } from "../pages/ContactsPage";
+import { GeneralPage } from "../pages/GeneralPage";
+import { PriceListPage } from "../pages/PriceListPage";
+import { ProductionPage } from "../pages/ProductionPage";
 import "../css/MainContent.css";
 
 export function MainContent() {
