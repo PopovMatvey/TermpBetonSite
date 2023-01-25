@@ -8,9 +8,7 @@ require('dotenv').config();                 // work with .env file
 const nodeMailer = require('nodemailer')    // mail lib
 /*Varibles*/
 const PORT_APP = 2000;                      // app port
-const urlRequest = '/api/mail';             // url request api
-
-
+const urlRequest = '/api/mail/';             // url request api
 
 /*Requests*/
 //GET
@@ -20,15 +18,23 @@ app.get(`${urlRequest}`, (request, response) => {
 
 //POST
 app.post(`${urlRequest}`, (request, response) => {
+    // console.log(request.body.body)
     /*Mail varible*/
     const serviseMail = 'gmail';                            // Servise mail
     const mailFromSent = process.env.EMAIL;                 // Sent mail
     const mailToSent = process.env.EMAIL;                   // Got mail
     const nameRequest = request.body.name;                  // Deserelize object (name)
-    const shortMessageRequest = request.body.shortMessage;  // Deserelize object (short message)
+    const phoneRequest = request.body.phone;                // Deserelize object (phone) 
+    const emailRequest = request.body.email;                // Deserelize object (email)
+    const shortMessageRequest = request.body.message;       // Deserelize object (short message)
     // Send message
-    const subjectLetter = `Письмо отправленое node.js`;                                  // Subject letter
-    const textLetter = `Приветствую ${nameRequest}. Послание ${shortMessageRequest}`;    // Text letter
+    const subjectLetter = `Заказчик ООО "Термобетон"`;      // Subject letter
+    const textLetter = `\n
+                        Имя: ${nameRequest} \n
+                        Телефон: ${phoneRequest}\n
+                        Почта ${emailRequest}\n
+                        Сообщение ${shortMessageRequest}\n                         
+                         `;                                 // Text letter
 
     const transporter = nodeMailer.createTransport(
         {
@@ -53,6 +59,7 @@ app.post(`${urlRequest}`, (request, response) => {
                 console.log(error);
             } else {
                 console.log('Message has been sent');
+                response.status(200);
             }
         }
     );

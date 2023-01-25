@@ -1,0 +1,15 @@
+{
+  "short_name": "Termobeton",
+  "name": "ooo Termobeton corpotation",
+  "icons": [
+    {
+      "src": "logoCompany.png",
+      "type": "image/png",
+      "sizes": "674x291"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
