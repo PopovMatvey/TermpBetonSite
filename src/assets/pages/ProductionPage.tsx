@@ -6,9 +6,7 @@ export function ProductionPage() {
         <div className="contact-page-block">
             <h1>ООО "Термобетон"</h1>
             <div className="contact-page-block_text">
-                
             </div>
-
         </div>
     );
 }

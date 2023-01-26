@@ -1,11 +1,35 @@
 import React from 'react';
 import '../css/ContactPage.css';
+import { useContactFormState } from '../hook/contactFormState';
+import { request } from '../hook/request';
 
 export function ContactPage() {
+    const {
+        nameInput,setNameInput,
+        phoneInput,setPhoneInput,
+        emailInput,setEmailInput,
+        messageInput,setMessageInput,
+    } = useContactFormState();
 
-    const submitDataFormHendler = (event:React.MouseEvent<HTMLFormElement>) => {
+    const submitDataFormHendler = async (event: React.MouseEvent<HTMLFormElement>) => {
+        const apiUrl = '/api/mail/';
+        const httpMethod = "POST";
+        let postRequest: Request;
+        const requestedObject: any = {
+            name: nameInput,
+            phone: phoneInput,
+            email: emailInput,
+            message: messageInput,
+        }
+
         event.preventDefault();
-        console.log("send");
+        postRequest = await request(apiUrl,httpMethod,requestedObject);
+        setNameInput("");
+        setPhoneInput("");
+        setEmailInput("");
+        setMessageInput("");
+
+        console.log(postRequest);
     }
 
     return (
@@ -37,7 +61,7 @@ export function ContactPage() {
                     <a href="tel:+7-910-644-50-33">+7-910-644-50-33</a>
                     <a href="tel:+7-910-643-58-95">+7-910-643-58-95</a>
                 </span>
-                <span>
+                {/* <span>
                     ИНН
                 </span>
                 <span>
@@ -63,14 +87,14 @@ export function ContactPage() {
                 </span>
                 <span>
                     ОКПО
-                </span>
+                </span> */}
                 <span>
                     <a href="mailto:termobeton@mail.ru">Эл. почта: termobeton@mail.ru</a>
                 </span>
                 <span>
                     <span> Директора:</span>
-                    <a> Попов Сергей Леонидович,</a>
-                    <a> Дмитриев Сергей Александрович</a>
+                    <samp> Попов Сергей Леонидович,</samp>
+                    <samp> Дмитриев Сергей Александрович</samp>
                 </span>
                 <span>
                     действует на основании Устава
@@ -80,20 +104,28 @@ export function ContactPage() {
                 <h2>ФОРМА СВЯЗИ С НАМИ</h2>
                 <form onSubmit={submitDataFormHendler}>
                     <div className="contact-page-block_form_row">
-                        <label htmlFor="">Ваше имя</label>
-                        <input type="text" />
+                        <label htmlFor="nameField">Ваше имя</label>
+                        <input type="text" id='nameField' value={nameInput} placeholder='*Имя' onChange={(event) => {
+                            setNameInput(event.target.value);
+                        }} />
                     </div>
                     <div className="contact-page-block_form_row">
-                        <label htmlFor="">Номер телефона</label>
-                        <input type='tel' />
+                        <label htmlFor="phoneField">Номер телефона</label>
+                        <input type='tel' id='phoneField' value={phoneInput} placeholder='*Телефон' onChange={(event) => {
+                            setPhoneInput(event.target.value);
+                        }} />
                     </div>
                     <div className="contact-page-block_form_row">
-                        <label htmlFor="">Почта</label>
-                        <input type='email' />
+                        <label htmlFor="mailField">Почта</label>
+                        <input type='email' id='mailField' value={emailInput} placeholder='Почта' onChange={(event) => {
+                            setEmailInput(event.target.value);
+                        }} />
                     </div>
                     <div className="contact-page-block_form_row">
-                        <label htmlFor="">Ваше сообщение</label>
-                        <textarea name="" id="">
+                        <label htmlFor="massegeField">Ваше сообщение</label>
+                        <textarea name="massege" id="massegeField" value={messageInput} placeholder='Сообщение' onChange={(event) => {
+                            setMessageInput(event.target.value);
+                        }}>
                         </textarea>
                     </div>
                     <div className="contact-page-block_form_row">

@@ -76,6 +76,13 @@ h2{
     background: rgba(65, 159, 173, 0.5);
     border: 2px solid black;
     padding: 5px 5px 5px 5px;
+    margin-top: 5px;
+    font-size: 12px;
+    transition: .5s all;
+}
+
+.contact-page-block_form_row input:focus{
+    border: 3px solid #5DA3AD;
 }
 
 .contact-page-block_form_row textarea{
@@ -84,6 +91,12 @@ h2{
     height: 50px;
     padding: 5px 5px 5px 5px;
     border: 2px solid black;
+    font-size: 12px;
+    transition: .5s all;
+}
+
+.contact-page-block_form_row textarea:focus{
+    border: 3px solid #5DA3AD;
 }
 
 .contact-page-block_form_row .submit-button{
