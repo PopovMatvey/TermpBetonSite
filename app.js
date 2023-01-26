@@ -18,7 +18,9 @@ app.get(`${urlRequest}`, (request, response) => {
 
 //POST
 app.post(`${urlRequest}`, (request, response) => {
-    // console.log(request.body.body)
+    console.log(request);
+    console.log(response);
+
     /*Mail varible*/
     const serviseMail = 'gmail';                            // Servise mail
     const mailFromSent = process.env.EMAIL;                 // Sent mail
