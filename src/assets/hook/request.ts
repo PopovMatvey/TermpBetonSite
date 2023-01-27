@@ -5,12 +5,6 @@
 export async function request(parUrl: string,parMethod = 'GET',parData = null) {
     try {
         let response: Response;
-        // let body: string;
-
-        // if (parData) {
-        //     body = JSON.stringify(parData);
-        // }
-
         const httpObject: RequestInit = {
             method: parMethod, // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
