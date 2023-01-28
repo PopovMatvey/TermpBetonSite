@@ -35,11 +35,13 @@ h2 {
 .contact-page-block_text span {
     display: block;
     padding: 10px 0px 10px 0px;
+    font-size: 18px;
 }
 
 .contact-page-block_text span a {
     display: block;
     padding: 10px 0px 10px 0px;
+    font-size: 18px;
     transition: .5s all;
 }
 
@@ -130,6 +132,21 @@ h2 {
 }
 
 @media screen and (max-width:991px) {
+    h1 {
+        font-size: 25px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+
+    .contact-page-block_text span {
+        font-size: 14px;
+    }
+
+    .contact-page-block_text span a{
+        font-size: 14px;
+    }
 
     .contact-page-block_form_row label {
         font-size: 14px;
@@ -149,6 +166,21 @@ h2 {
 
 
 @media screen and (max-width:450px) {
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+
+    .contact-page-block_text span {
+        font-size: 12px;
+    }
+
+    .contact-page-block_text span a{
+        font-size: 12px;
+    }
 
     .contact-page-block_form_row label {
         font-size: 12px;
