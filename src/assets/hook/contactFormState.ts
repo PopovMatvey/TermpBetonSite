@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export function useContactFormState() {
     const [nameInput,setNameInput] = useState('');
-    const [phoneInput,setPhoneInput] = useState('');
+    const [phoneInput,setPhoneInput] = useState('+7');
     const [emailInput,setEmailInput] = useState('');
     const [messageInput,setMessageInput] = useState('');
 

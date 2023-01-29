@@ -2,7 +2,7 @@
 // url - url request
 // method - http method
 // data - json object (requested object)
-export async function request(parUrl: string,parMethod = 'GET',parData = null) {
+export async function request(parUrl: string, parMethod = 'GET', parData = null) {
     try {
         let response: Response;
         const httpObject: RequestInit = {
@@ -19,10 +19,10 @@ export async function request(parUrl: string,parMethod = 'GET',parData = null) {
             body: JSON.stringify(parData), // body data type must match "Content-Type" header
         }
 
-        response = await fetch(parUrl,httpObject);
+        response = await fetch(parUrl, httpObject);
 
-        return await response.json();
+        return await response.status;
     } catch (e: any) {
-        console.warn("Error:",e.message);
+        console.warn("Error:", e.message);
     }
 }
