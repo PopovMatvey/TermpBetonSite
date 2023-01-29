@@ -131,6 +131,16 @@ h2 {
     transform: scale(1.1);
 }
 
+.disable-submit-button{
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.loader-notification{
+    display: block;
+    margin: 20px auto 0px;
+}
+
 @media screen and (max-width:991px) {
     h1 {
         font-size: 25px;

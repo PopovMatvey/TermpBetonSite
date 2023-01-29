@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../css/modalNotification.css";
 import '../css/ContactPage.css';
 import { useContactFormState } from '../hook/contactFormState';
@@ -21,10 +21,12 @@ export function ContactPage() {
         modalWindowState, setModalWindowState,
     } = useNotificationWindowState();
 
+    const [loaderStatus, setLoaderStatus] = useState(false);
+
     // Обнуление всех полей
     function resetInputFields() {
         setNameInput("");
-        setPhoneInput("");
+        setPhoneInput("+7");
         setEmailInput("");
         setMessageInput("");
     }
@@ -68,7 +70,8 @@ export function ContactPage() {
             ((parRequestedObject.name === '') && (parRequestedObject.phone === '')) ||
             ((parRequestedObject.name === '') && (parRequestedObject.email === '')) ||
             ((parRequestedObject.phone === '') && (parRequestedObject.email === '')) ||
-            (parRequestedObject.name === '') || (parRequestedObject.phone === '') || (parRequestedObject.email === ''));
+            (parRequestedObject.name === '') || (parRequestedObject.phone === '') || (parRequestedObject.email === '') ||
+            getAmountDigital(parRequestedObject.phone) < 11);
     }
 
     // Получить количество цифр
@@ -84,81 +87,98 @@ export function ContactPage() {
         return counter;
     }
 
+    // Получить уведомление предупреждения
+    function getNotificationAttantion(parRequestedObject: any) {
+        if ((parRequestedObject.name === '') && (parRequestedObject.phone === '') && (parRequestedObject.email === '')) {
+            getModalWindow("Внимаине", "Заполните пожалуйста поля: имя, телефон, почта", true);
+
+            return;
+        }
+
+        if ((parRequestedObject.name === '') && (parRequestedObject.phone === '')) {
+            getModalWindow("Внимаине", "Заполните пожалуйста поля: имя, телефон, почта", true);
+
+            return;
+        }
+
+        if ((parRequestedObject.name === '') && (parRequestedObject.email === '')) {
+            getModalWindow("Внимаине", "Заполните пожалуйста поля: имя, почта", true);
+
+            return;
+        }
+
+        if ((parRequestedObject.phone === '') && (parRequestedObject.email === '')) {
+            getModalWindow("Внимаине", "Заполните пожалуйста поля: телефон, почта", true);
+
+            return;
+        }
+
+        if (parRequestedObject.name === '') {
+            getModalWindow("Внимаине", "Заполните пожалуйста имя", true);
+
+            return;
+        }
+
+        if (parRequestedObject.phone === '') {
+            getModalWindow("Внимаине", "Заполните пожалуйста телефон", true);
+
+            return;
+        }
+
+        if (parRequestedObject.email === '') {
+            getModalWindow("Внимаине", "Заполните пожалуйста почту", true);
+
+            return;
+        }
+
+        if (getAmountDigital(parRequestedObject.phone) < 11) {
+            getModalWindow("Внимаине", "Неверный формат номера, должно быть 11 цифр, введено " + getAmountDigital(parRequestedObject.phone), true);
+
+            return;
+        }
+    }
+
+    // Получить уведомление с сервера
+    function getNotificationServer(parStatusRequest: number | undefined) {
+        if (parStatusRequest === 200) {
+            getModalWindow("Успех", "Всё было успешно отправлено", true);
+            resetInputFields();
+
+            return;
+        }
+
+        getModalWindow("Провал", "Сервер сейчас недоступен, попытайтесь отправить данные чуть позже :(", true);
+
+        return;
+    }
+
     // Обработчик Отправки данных с формы
     const submitDataFormHendler = async (event: React.MouseEvent<HTMLFormElement>) => {
         const apiUrl = '/api/mail/';
         const httpMethod = "POST";
+        let postRequestStatus: number | undefined;
         const requestedObject: any = {
             name: nameInput,
             phone: phoneInput,
             email: emailInput,
             message: messageInput,
         }
-        let postRequestStatus: number | undefined;
+        const submitInput: Element | null = document.querySelector("#submitInput");
 
         event.preventDefault();
 
-        // console.log(checkFillFields(requestedObject));
-
-        if ((requestedObject.name === '') && (requestedObject.phone === '') && (requestedObject.email === '')) {
-            getModalWindow("Внимаине", "Заполните пожалуйста поля: имя, телефон, почта", true);
+        if (checkFillFields(requestedObject)) {
+            getNotificationAttantion(requestedObject);
 
             return;
         }
 
-        if ((requestedObject.name === '') && (requestedObject.phone === '')) {
-            getModalWindow("Внимаине", "Заполните пожалуйста поля: имя, телефон, почта", true);
-
-            return;
-        }
-
-        if ((requestedObject.name === '') && (requestedObject.email === '')) {
-            getModalWindow("Внимаине", "Заполните пожалуйста поля: имя, почта", true);
-
-            return;
-        }
-
-        if ((requestedObject.phone === '') && (requestedObject.email === '')) {
-            getModalWindow("Внимаине", "Заполните пожалуйста поля: телефон, почта", true);
-
-            return;
-        }
-
-        if (requestedObject.name === '') {
-            getModalWindow("Внимаине", "Заполните пожалуйста имя", true);
-
-            return;
-        }
-
-        if (requestedObject.phone === '') {
-            getModalWindow("Внимаине", "Заполните пожалуйста телефон", true);
-
-            return;
-        }
-
-        if (requestedObject.email === '') {
-            getModalWindow("Внимаине", "Заполните пожалуйста почту", true);
-
-            return;
-        }
-
-        console.log(getAmountDigital(requestedObject.phone));
-        if (getAmountDigital(requestedObject.phone) < 11) {
-            getModalWindow("Внимаине", "Неверный формат номера, должно быть 11 цифр", true);
-
-            return;
-        }
-
+        submitInput?.classList.add('disable-submit-button');
+        setLoaderStatus(true);
         postRequestStatus = await request(apiUrl, httpMethod, requestedObject);
-
-        if (postRequestStatus === 200) {
-            getModalWindow("Успех", "Всё было успешно отправлено", true);
-            resetInputFields();
-        }
-
-        if (postRequestStatus !== 200) {
-            getModalWindow("Провал", "Сервер сейчас недоступен, попытайтесь отправить данные чуть позже :(", true);
-        }
+        getNotificationServer(postRequestStatus);
+        setLoaderStatus(false);
+        submitInput?.classList.remove('disable-submit-button')
     }
 
     return (
@@ -248,12 +268,10 @@ export function ContactPage() {
                             <input type='tel' id='phoneField' value={phoneInput} placeholder='*Телефон' onChange={(event) => {
                                 const inputString = event.target.value;
                                 const validBollValue = validPhoneInput(getLastSimbolString(inputString));
-                                // getAmountDigital(parString: string)
 
                                 if ((inputString.length > 1) && validBollValue && (getAmountDigital(inputString) < 12)) {
                                     setPhoneInput(event.target.value);
                                 }
-
                             }} />
                         </div>
                         {/* Поле ввода почты */}
@@ -273,7 +291,8 @@ export function ContactPage() {
                         </div>
                         {/* Кнопка отправки данных с формы */}
                         <div className="contact-page-block_form_row">
-                            <input className='submit-button' type='submit' value="Отправить" />
+                            <input className='submit-button' type='submit' id='submitInput' value="Отправить" />
+                            {loaderStatus && <span className='loader-notification'>Подождите...</span>}
                         </div>
                     </form>
                 </div>
