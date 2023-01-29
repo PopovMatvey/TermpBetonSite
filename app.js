@@ -18,13 +18,10 @@ app.get(`${urlRequest}`, (request, response) => {
 
 //POST
 app.post(`${urlRequest}`, (request, response) => {
-    console.log(request);
-    console.log(response);
-
     /*Mail varible*/
     const serviseMail = 'gmail';                            // Servise mail
     const mailFromSent = process.env.EMAIL;                 // Sent mail
-    const mailToSent = process.env.EMAIL;                   // Got mail
+    const mailToSent = "popov.matvey.s62@gmail.com";                   // Got mail
     const nameRequest = request.body.name;                  // Deserelize object (name)
     const phoneRequest = request.body.phone;                // Deserelize object (phone) 
     const emailRequest = request.body.email;                // Deserelize object (email)
@@ -59,9 +56,10 @@ app.post(`${urlRequest}`, (request, response) => {
         (error) => {
             if (error !== null) {
                 console.log(error);
+                response.sendStatus(500);
             } else {
                 console.log('Message has been sent');
-                response.status(200);
+                response.sendStatus(200);
             }
         }
     );
