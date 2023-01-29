@@ -23,3 +23,11 @@ body{
     align-items: center;
     flex-wrap: wrap;
 }
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}

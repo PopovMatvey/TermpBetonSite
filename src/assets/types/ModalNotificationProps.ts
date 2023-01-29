@@ -1,4 +1,5 @@
 export interface ModalNotificationProps {
-    parTitleProps: string;
+    parTitleText: string;
     parBodyText: string;
+    parModalWindowState: boolean;
 }

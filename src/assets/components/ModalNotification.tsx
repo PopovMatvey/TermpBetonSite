@@ -1,25 +1,28 @@
-import React,{ useEffect } from "react";
+// import React, { useEffect, useState } from "react";
+import React from "react";
 import "../css/modalNotification.css";
-import { useContactFormState } from "../hook/contactFormState";
-import { ModalNotificationProps } from "../types/ModalNotificationProps";
+// import { useNotificationWindowState } from "../hook/notificationWindowState";
+// import { ModalNotificationProps } from "../types/ModalNotificationProps";
 
-export function ModalNotification({ parTitleProps,parBodyText }: ModalNotificationProps) {
+export function ModalNotification(
+    // { parTitleText, parBodyText, parModalWindowState }: ModalNotificationProps
+    ) {
 
     return (
-        // <div className="modal_notification">
-        //     <h1>{parTitleProps}</h1>
-        //     <span>{parBodyText}</span>
-        // </div>
+
         <>
-            <div className="body-modal-notification" />
-
-            {/* // className="fixed bg-black/50 top-0 right-0 left-0 bottom-0" */}
-            {/* // onClick={onClose} */}
-
-            <div className="modal-notification">
-                <h1>{parTitleProps}</h1>
-                <span>{parBodyText}</span>
-            </div>
+            {
+                < div id="modalWindow" >
+                    <div className="body-modal-notification" onClick={() => {
+                    }} />
+                    <div className="modal-notification">
+                        <button onClick={() => {
+                        }}>X</button>
+                        <h1>{}</h1>
+                        <span>{}</span>
+                    </div>
+                </div >
+            }
         </>
     );
 }
