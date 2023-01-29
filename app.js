@@ -21,7 +21,7 @@ app.post(`${urlRequest}`, (request, response) => {
     /*Mail varible*/
     const serviseMail = 'gmail';                            // Servise mail
     const mailFromSent = process.env.EMAIL;                 // Sent mail
-    const mailToSent = "popov.matvey.s62@gmail.com";                   // Got mail
+    const mailToSent = "matyha550@gmail.com";                   // Got mail
     const nameRequest = request.body.name;                  // Deserelize object (name)
     const phoneRequest = request.body.phone;                // Deserelize object (phone) 
     const emailRequest = request.body.email;                // Deserelize object (email)
