@@ -41,6 +41,7 @@ export function Menu() {
         footerLink[0].className = 'disable-href-footer';
     }
 
+    // Обработчик пункта мобильного меню
     const hendlerHrferMobileClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
         const arrayBeginnerLinksMobile = document.querySelectorAll('.menu-block_mobile_items')[0].children;
         const arrayFooterLinks = getHrefsArray(document.querySelectorAll('.footer-content_navigation ul')[0].children);

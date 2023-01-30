@@ -2,7 +2,7 @@
 import "../css/InfoHeader.css";
 import logoCompany from "../image/logoCompany.png";
 
-
+// Информация шапки
 export function InfoHeader() {
     return (
         <div className="info-header-block wrapper-sa">

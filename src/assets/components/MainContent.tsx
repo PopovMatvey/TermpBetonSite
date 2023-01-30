@@ -7,6 +7,7 @@ import { PriceListPage } from "../pages/PriceListPage";
 import { ProductionPage } from "../pages/ProductionPage";
 import "../css/MainContent.css";
 
+// Основной контент
 export function MainContent() {
     return (
         <div className="main-content">
