@@ -1,7 +1,7 @@
 import React from "react";
+import '../css/Footer.css'
 import { Link } from "react-router-dom";
 import logoCompany from "../image/logoCompany.png";
-import '../css/Footer.css'
 
 // Подвал
 export function Footer() {

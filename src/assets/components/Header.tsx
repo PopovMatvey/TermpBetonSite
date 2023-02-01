@@ -1,7 +1,7 @@
 import React from "react";
+import "../css/header.css";
 import { InfoHeader } from "./InfoHeader";
 import { Menu } from "./Menu";
-import "../css/header.css";
 
 // Шапка
 export function Header(){

@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
-import { Link } from "react-router-dom";
 import "../css/Menu.css";
+import { Link } from "react-router-dom";
 
 // Главное меню
 export function Menu() {

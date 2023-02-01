@@ -1,8 +1,12 @@
 import React from 'react';
+import { Slider } from '../components/Slider';
 import '../css/GeneralPage.css';
 
 export function GeneralPage() {
     return (
-        <h1>Основная страница</h1>
+        <div className="general-page">
+            <h1>Основная страница</h1>
+            <Slider />
+        </div>
     );
 }

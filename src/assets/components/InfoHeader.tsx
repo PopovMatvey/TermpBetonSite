@@ -1,4 +1,4 @@
-// import React,{ useEffect } from "react";
+import React from "react";
 import "../css/InfoHeader.css";
 import logoCompany from "../image/logoCompany.png";
 
