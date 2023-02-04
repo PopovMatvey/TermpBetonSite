@@ -1,5 +1,14 @@
-.main-content{
+.main-content {
     width: 100%;
+    height: auto;
     padding-top: 20px;
-    padding: 50px 20% 50px 20%;
+}
+
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+    padding: 20px 20%;
 }
