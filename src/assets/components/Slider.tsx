@@ -1,13 +1,13 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import "../css/Slider.css";
 import { sliderElementObjects } from "../data/sliderElementObjects";
 import { SliderElementProps } from "../types/SliderElementProps";
 import { SliderElement } from "./SliderElement";
 
 export function Slider() {
-    // const sliderParams: SliderElementProps[] = sliderElementObjects();
-    const [sliderElements,setSliderElements] = useState(sliderElementObjects());
-    const [showSliderElements,setShowSliderElements] = useState(getFirstElementsArray(sliderElements));
+    const [sliderElements, setSliderElements] = useState(sliderElementObjects());
+    const [showSliderElements, setShowSliderElements] = useState(getFirstElementsArray(sliderElements));
+    let indexKeyBullit = 0;
 
     function getFirstElementsArray(array: any) {
         let returndArray: any = [];
@@ -20,12 +20,51 @@ export function Slider() {
         return returndArray;
     }
 
+    
+    function getKeySecondSliderElement(array: any) {
+        return array[1].key;
+    }
+
+
+    function getKeyPenultimateElement(array: any) {
+        return array[array.length - 1].key
+    }
+
     const hendlerLeftArrorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+
+
+        console.log(getKeySecondSliderElement(showSliderElements));
+        console.log(getKeyPenultimateElement(showSliderElements));
+
+        // console.log(showSliderElements);
+
+        setShowSliderElements([
+            {
+                key: 2,
+                imagePath: 'imagePath',
+                titleText: 'bdfdf',
+                classList: 'slider-element active',
+            },
+            {
+                key: 3,
+                imagePath: 'imagePath',
+                titleText: 'маыввы',
+                classList: 'slider-element',
+            },
+            {
+                key: 4,
+                imagePath: 'imagePath',
+                titleText: 'uigui',
+                classList: 'slider-element',
+            },
+        ]);
 
     }
 
     const hendlerRighttArrorClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 
+        console.log(showSliderElements)
     }
 
     return (
@@ -37,18 +76,16 @@ export function Slider() {
                             <SliderElement key={element.key} imagePath={element.imagePath} titleText={element.titleText} classList={element.classList} />
                         )
                     }
-                    {
-                        console.log(showSliderElements)
-                    }
                 </div>
                 <div className="slider-block_buttons_panel">
                     <button onClick={hendlerLeftArrorClick}>{'<'}</button>
                     <div className="slider-block_buttons_panel__bullits">
                         {
                             sliderElements.map(() =>
-                                <div 
-                                // key={i++} 
-                                className="bullit bullit-active"></div>
+                                <div
+                                    key={indexKeyBullit++}
+                                    className="bullit bullit-active">
+                                </div>
                             )
                         }
                     </div>

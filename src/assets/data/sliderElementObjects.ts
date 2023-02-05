@@ -24,7 +24,7 @@ export function sliderElementObjects() {
         {
             key: 4,
             imagePath: 'imagePath',
-            titleText: 'маыввы',
+            titleText: 'ojo',
             classList: 'slider-element',
         },
     ];
