@@ -1,0 +1,6 @@
+/* Основная страница */
+.general-page_slider-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

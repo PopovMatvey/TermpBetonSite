@@ -4,7 +4,7 @@ import '../src/assets/css/reset.css';
 import '../src/assets/css/fontsApplication.css';
 import '../src/assets/css/themify-icons.css';
 import '../src/assets/css/index.css';
-import App from './assets/components/App';
+import App from './assets/components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
