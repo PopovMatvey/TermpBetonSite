@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormData } from "../../components/FormData/FormData";
-import "../../css/modalNotification.css";
 import './css/ContactPage.css';
 
 export function ContactPage() {
@@ -90,6 +89,9 @@ export function ContactPage() {
                     </span>
                 </div>
                 <FormData />
+                <div className="map-container">
+                    <iframe title='map' src="https://yandex.ru/map-widget/v1/?um=constructor%3Ae8ce0eb96fe1ec454bbc36ed1d7919c01a6bd518f3069b48c0e8ca7217f3308c&amp;source=constructor" width="100%" height="500"></iframe>
+                </div>
             </div>
         </>
     );
